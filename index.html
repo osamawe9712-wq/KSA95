@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>السيرة الذاتية لخادم الحرمين الشريفين الملك سلمان بن عبد العزيز</title>
+    <title>السيرة الذاتية لخادم الحرمين الشريفين الملك سلمان بن عبد العزيز - تصميم متجدد</title>
     <style>
         /* ================================================= */
-        /* أكواد CSS التي أرسلتها (تم وضعها هنا بالكامل) */
+        /* أكواد CSS (مع التعديلات والتخصيص) */
         /* ================================================= */
         :root {
             /* الألوان القياسية */
-            --primary-green: #004C33; /* أخضر غامق (التركيز) */
-            --secondary-green: #006037; /* أخضر متوسط (التنقل) */
-            --accent-gold: #C5A359; /* ذهبي (التمييز) */
-            --light-bg: #F5F1E5; /* بيج فاتح (الخلفية) */
-            --dark-bg: #0D0D0D; /* خلفية الفوتر */
+            --primary-green: #004C33; 
+            --secondary-green: #006037; 
+            --accent-gold: #C5A359; 
+            --light-bg: #F5F1E5; 
+            --dark-bg: #0D0D0D; 
             --text-color: #333;
             --container-bg: white;
             --shadow-color: rgba(0, 0, 0, 0.1);
@@ -34,39 +34,25 @@
             --shadow-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* الوضع التراثي / زمن المؤسسين (Founders' Era Mode) - الفكرة 2 */
+        /* الوضع التراثي / زمن المؤسسين (Founders' Era Mode) */
         body.founders-mode {
-            --primary-green: #964B00; /* بني عميق */
-            --secondary-green: #C5A359; /* ذهبي عتيق */
-            --accent-gold: #333; /* نص داكن */
-            --light-bg: #F5E8D3; /* خلفية سيبيا */
+            --primary-green: #964B00; 
+            --secondary-green: #C5A359; 
+            --accent-gold: #333; 
+            --light-bg: #F5E8D3; 
             --dark-bg: #D8C3A5;
-            --text-color: #583F2F; /* نص بني */
+            --text-color: #583F2F; 
             --container-bg: #FDF7EC;
-            /* فلتر عام ليعطي تأثير الصورة القديمة */
             filter: sepia(0.4) saturate(1.1) contrast(1.1); 
         }
-        .founders-mode .hero-background-image {
-            filter: grayscale(0.2) sepia(0.6); /* تطبيق فلتر خاص على صورة البطل */
-        }
-        .founders-mode .hero h1, .founders-mode .hero p {
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-        }
-
+        .founders-mode .hero-background-image { filter: grayscale(0.2) sepia(0.6); }
+        .founders-mode .hero h1, .founders-mode .hero p { text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); }
 
         /* ================================================= */
-        /* التنسيقات العامة */
+        /* التنسيقات العامة والمشتركة */
         /* ================================================= */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         body {
             padding-top: 60px;                           
             font-family: var(--body-font);
@@ -74,143 +60,26 @@
             color: var(--text-color);
             direction: rtl;
             line-height: 1.6;
-            transition: all 0.5s ease-out; /* انتقال الفلتر والألوان */
+            transition: all 0.5s ease-out;
         }
 
-        h1, h2, h3 {
-            color: var(--primary-green);
-            font-weight: 700;
-            transition: color 0.5s ease;
-        }
+        h1, h2, h3 { color: var(--primary-green); font-weight: 700; transition: color 0.5s ease; }
 
         /* أزرار الأوضاع */
-        .mode-toggle-group {
-            position: fixed;
-            top: 25px;
-            left: 25px; 
-            z-index: 1001;
-            display: flex;
-            gap: 10px;
-        }
+        .mode-toggle-group { position: fixed; top: 25px; left: 25px; z-index: 1001; display: flex; gap: 10px; }
         .mode-toggle {
-            background-color: var(--dark-bg);
-            color: white;
-            border: 2px solid var(--accent-gold);
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 10px var(--shadow-color);
-            transition: all 0.3s ease;
+            background-color: var(--dark-bg); color: white; border: 2px solid var(--accent-gold); border-radius: 50%; width: 45px; height: 45px; font-size: 1.5rem; cursor: pointer; display: flex;
+            justify-content: center; align-items: center; box-shadow: 0 4px 10px var(--shadow-color); transition: all 0.3s ease;
         }
+        .mode-toggle:hover { transform: scale(1.1); }
+        .mode-toggle.active { background-color: var(--primary-green); border-color: var(--primary-green); }
 
-        .mode-toggle:hover {
-            transform: scale(1.1);
-        }
-        .mode-toggle.active {
-            background-color: var(--primary-green);
-            border-color: var(--primary-green);
-        }
+        /* شريط التنقل */
+        .nav-header { position: fixed; top: 0; width: 100%; height: 60px; z-index: 1000; background-color: var(--secondary-green); }
+        nav { display: flex; justify-content: center; padding: 1rem 0; }
+        nav a { color: white; text-decoration: none; padding: 0 20px; white-space: nowrap; font-weight: bold; font-size: 1.1rem; transition: color 0.3s ease, transform 0.3s ease; }
+        nav a:hover { color: var(--accent-gold); transform: scale(1.1); }
 
-
-        /* تنسيق رأس الصفحة (Hero Section) */
-        .hero {
-            position: relative;
-            height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            overflow: hidden;
-            background-attachment: fixed;
-            padding-top: 5rem;
-        }
-
-        .hero-background-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            transition: filter 0.5s ease-out;
-        }
-
-        /* طبقة التظليل فوق الصورة */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 0 1rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 8vw, 4.5rem);
-            font-weight: bold;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            margin-bottom: 1rem;
-        }
-
-        /* شريط التنقل (Navigation Bar) */
-        nav {
-            position: sticky;
-            top: 0;
-            background-color: var(--secondary-green);
-            padding: 1rem 0;
-            z-index: 1000;
-            box-shadow: 0 4px 8px var(--shadow-color);
-            display: flex;
-            justify-content: center;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            transition: background-color 0.5s ease;
-        }
-        .nav-header {
-             position: fixed; 
-             top: 0;          
-             width: 100%;     
-             height: 60px;
-             z-index: 1000;   
-             background-color: var(--secondary-green);
-        }
-
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0 20px;
-            white-space: nowrap;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--accent-gold);
-            transform: scale(1.1);
-        }
-
-        nav::-webkit-scrollbar {
-            display: none;
-        }
 
         /* تنسيق أقسام المحتوى */
         .container {
@@ -224,37 +93,20 @@
             transition: all 0.6s ease-out, background-color 0.5s ease;
             transform: translateY(30px);
             opacity: 0;
-            
-            /* الفكرة 3: إضافة نمط بصري خفيف */
             position: relative;
             overflow: hidden;
         }
-
-        /* الفكرة 3: زخرفة شفافة على جميع الحاويات */
         .container::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* نمط خطوط خفيف مستوحى من الخطوط العربية / الهوية */
+            top: 0; left: 0; width: 100%; height: 100%;
             background-image: repeating-linear-gradient(45deg, var(--primary-green) 0, var(--primary-green) 1px, transparent 1px, transparent 10px);
             opacity: 0.04; 
             z-index: 0;
             pointer-events: none;
         }
-
-        .container > * { 
-            position: relative;
-            z-index: 1; /* جعل المحتوى فوق الزخرفة */
-        }
-
-        .container.visible {
-            opacity: 1;
-            transform: translateY(0);                          
-        }
-
+        .container > * { position: relative; z-index: 1; }
+        .container.visible { opacity: 1; transform: translateY(0); }
         .container h2 {
             font-size: 2.5rem;
             border-bottom: 3px solid var(--accent-gold);
@@ -263,78 +115,119 @@
             text-align: center;
         }
 
-        /* قسم الاقتباسات */
-        .quote-section {
-            background-color: var(--secondary-green);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 10px;
-            font-size: 1.5rem;
-            font-style: italic;
-            text-align: center;
-            margin-top: 30px;
-            box-shadow: 0 4px 10px var(--shadow-color);
+        /* ---------------------------------------------------- */
+        /* التصميم الجديد للسيرة الذاتية */
+        /* ---------------------------------------------------- */
+
+        /* 1. هيكل معلومات الملك الأساسية (Grid Layout) */
+        .cv-main-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr; /* عمود للصورة وعمود للمعلومات */
+            gap: 40px;
+            align-items: center;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            border-bottom: 1px dashed var(--secondary-green);
         }
 
-        .quote-section cite {
-            display: block;
-            margin-top: 1rem;
-            font-style: normal;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--accent-gold);
-        }
-
-        /* المخطط الزمني (Timeline) - تم تخصيص هذا الجزء للسيرة */
-        #timeline-section {
-            background-image: var(--history-bg);
-            background-repeat: repeat;
-        }
-
-        .timeline {
+        .profile-image-placeholder {
+            width: 250px;
+            height: 250px;
+            overflow: hidden; 
+            border-radius: 50%; 
+            border: 5px solid var(--accent-gold); 
+            box-shadow: 0 0 20px var(--shadow-color); 
+            flex-shrink: 0;
             position: relative;
-            padding: 20px 0;
-            margin-top: 2rem;
-            border-right: 3px solid var(--primary-green); /* خط وهمي لـ Timeline */
-            padding-right: 25px;
+        }
+        .profile-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-details h1 {
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            color: var(--primary-green);
+        }
+        .profile-details .title {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            font-weight: bold;
+            display: block;
+        }
+        .profile-details .bio {
+             font-size: 1.1rem;
+             margin-top: 15px;
+             color: var(--text-color);
+        }
+
+        /* 2. تصميم الخط الزمني (Timeline Cards) */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 30px 0;
         }
         .timeline-item {
-            margin-bottom: 30px;
-            padding-right: 15px;
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            padding: 20px;
             position: relative;
-            line-height: 1.8;
-            padding-left: 20px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            transition: all 0.3s ease;
+            border-right: 5px solid var(--primary-green);
         }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            right: -27px; /* وضع الدائرة على الخط */
-            top: 5px;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background-color: var(--accent-gold);
-            border: 3px solid var(--secondary-green);
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 8px 15px var(--shadow-color);
         }
         .timeline-item h3 {
+            font-size: 1.5rem;
             margin-bottom: 5px;
             color: var(--secondary-green);
-            font-size: 1.6rem;
-        }
-        .timeline-item p {
-            font-size: 1.1rem;
-            margin-top: 5px;
         }
         .timeline-year {
             font-size: 0.9rem;
             font-weight: bold;
             color: var(--accent-gold);
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            /* إضافة توهج خفيف للذهب */
+            text-shadow: 0 0 5px rgba(197, 163, 89, 0.5);
         }
-
-
-        /* قسم الإحصائيات (مناصب وأرقام) */
+        .timeline-item p {
+            font-size: 1rem;
+        }
+        
+        /* 3. بطاقة المعلومة البارزة (Feature Card) */
+        .feature-card {
+            background: linear-gradient(135deg, var(--secondary-green), var(--primary-green));
+            color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 8px 15px var(--shadow-color);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: scale(1.02);
+        }
+        .feature-card h3 {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        }
+        .feature-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* قسم الإحصائيات (Stats) */
         .stats-section {
             margin-top: 3rem;
             padding: 2rem;
@@ -350,142 +243,43 @@
             flex-wrap: wrap;
             margin-top: 1.5rem;
         }
-        .stat-item {
-            padding: 15px;
-            min-width: 150px;
-            margin: 10px;
-        }
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--primary-green);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        .stat-label {
-            color: var(--text-color);
-            font-size: 1rem;
-            display: block;
-        }
-
-        /* صورة الملف الشخصي (Profile Image) */
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            margin-bottom: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px dashed var(--accent-gold);
-        }
-        .profile-image-placeholder {
-            width: 250px;
-            height: 250px;
-            overflow: hidden; 
-            border-radius: 50%; 
-            border: 5px solid var(--primary-green); 
-            box-shadow: 0 0 20px var(--shadow-color); 
-            flex-shrink: 0;
-        }
-        .profile-image-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .profile-details h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            color: var(--primary-green);
-        }
-        .profile-details p {
-            font-size: 1.4rem;
-            color: var(--accent-gold);
-            margin-top: 5px;
-            font-weight: 500;
-        }
+        .stat-item { padding: 15px; min-width: 150px; margin: 10px; }
+        .stat-number { font-size: 3rem; font-weight: bold; color: var(--primary-green); margin-bottom: 0.5rem; display: block; }
+        .stat-label { color: var(--text-color); font-size: 1rem; display: block; }
 
         /* زر العودة للأعلى */
         #scrollToTopBtn {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            border: none;
-            outline: none;
-            background-color: var(--primary-green);
-            color: white;
-            cursor: pointer;
-            padding: 15px;
-            border-radius: 50%;
-            font-size: 18px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s, transform 0.3s;
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1000; border: none; outline: none;
+            background-color: var(--primary-green); color: white; cursor: pointer; padding: 15px; border-radius: 50%;
+            font-size: 18px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); transition: background-color 0.3s, transform 0.3s;
         }
-
-        #scrollToTopBtn:hover {
-            background-color: var(--secondary-green);
-            transform: scale(1.05);
-        }
+        #scrollToTopBtn:hover { background-color: var(--secondary-green); transform: scale(1.05); }
 
         /* تنسيق الفوتر */
-        footer {
-            background-color: var(--dark-bg);
-            color: #ccc;
-            text-align: center;
-            padding: 1.5rem 0;
-            font-size: 0.9rem;
-            margin-top: 3rem;
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
-        footer p {
-            margin: 5px 0;
-        }
+        footer { background-color: var(--dark-bg); color: #ccc; text-align: center; padding: 1.5rem 0; font-size: 0.9rem; margin-top: 3rem; transition: background-color 0.5s ease, color 0.5s ease; }
+        footer p { margin: 5px 0; }
 
 
         /* ---------------------------------------------------- */
         /* التعديلات الخاصة بالشاشات الصغيرة (الجوال) */
         /* ---------------------------------------------------- */
         @media (max-width: 992px) {
-            .profile-header {
-                flex-direction: column;
+             /* تحويل الهيكل الرئيسي إلى عمود واحد */
+            .cv-main-grid {
+                grid-template-columns: 1fr;
                 text-align: center;
             }
             .profile-image-placeholder {
                 margin: 0 auto 20px;
-                width: 180px;
-                height: 180px;
-            }
-            .profile-details h1 {
-                font-size: 2.5rem;
             }
             .timeline {
-                border-right: none;
-                padding-right: 0;
-            }
-            .timeline-item {
-                border-right: 3px solid var(--primary-green);
-                padding-right: 15px;
-            }
-            .timeline-item::before {
-                right: auto;
-                left: 0;
+                grid-template-columns: 1fr;
             }
         }
         @media (max-width: 768px) {
-            .mode-toggle-group {
-                top: 15px;
-                left: 15px;
-            }
-            .container {
-                padding: 1.5rem;
-                margin: 2rem auto;
-            }
-            .container h2 {
-                font-size: 2rem;
-            }
-            .stats-grid {
-                justify-content: center;
-            }
+            .container { padding: 1.5rem; margin: 2rem auto; }
+            .container h2 { font-size: 2rem; }
+            .profile-details h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -499,10 +293,10 @@
 
     <div class="nav-header">
         <nav>
-            <a href="#about">النشأة والحياة</a>
+            <a href="#about">السيرة الموجزة</a>
             <a href="#timeline-section">المسيرة الإدارية</a>
             <a href="#achievements">إنجازات الحكم</a>
-            <a href="#vision-stats">إحصائيات الرؤية</a>
+            <a href="#vision-stats">إحصائيات الإرث</a>
         </nav>
     </div>
 
@@ -510,101 +304,80 @@
         <img class="hero-background-image" src="https://images.unsplash.com/photo-1628173413554-159d87383a8f?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="صورة بانر">
         <div class="hero-content">
             <h1>سلمان بن عبد العزيز آل سعود</h1>
-            <p style="color: white; font-size: 1.8rem; margin-top: 10px;">خادم الحرمين الشريفين، وقائد مسيرة العزم والحزم</p>
+            <p style="color: white; font-size: 1.8rem; margin-top: 10px;">خادم الحرمين الشريفين، ملك المملكة العربية السعودية</p>
         </div>
     </header>
 
     <section class="container" id="about">
-        <div class="profile-header">
+        <div class="cv-main-grid">
             <div class="profile-image-placeholder">
                 <img src="https://cdn.discordapp.com/attachments/1420729467231273063/1421431517938188348/IMG_2821.jpg" alt="صورة الملك سلمان بن عبد العزيز">
             </div>
             <div class="profile-details">
                 <h1>خادم الحرمين الشريفين</h1>
-                <p>الملك سلمان بن عبد العزيز آل سعود</p>
-                <p style="color: var(--text-color); font-size: 1.1rem; margin-top: 15px;">**تاريخ الميلاد:** 5 شوال 1354 هـ (31 ديسمبر 1935 م)<br> **مكان الميلاد:** الرياض</p>
+                <span class="title">الملك سلمان بن عبد العزيز آل سعود</span>
+                <p class="bio">ولد الملك سلمان في الرياض عام 1935م، وهو الابن الخامس والعشرون للملك المؤسس عبد العزيز. نشأ في قصر الحكم وتلقى تعليمه المبكر في مدرسة الأمراء. تتجسد في شخصيته الحكمة الإدارية الممتدة لأكثر من خمسة عقود قضاها في خدمة العاصمة الرياض.</p>
+                <p class="bio" style="color: var(--accent-gold); font-weight: bold; margin-top: 10px;">"قائد مسيرة العزم، ورائد التنمية المستدامة."</p>
             </div>
         </div>
-
-        <h2>النشأة والتعليم</h2>
-        <p style="font-size: 1.1rem;">نشأ الملك سلمان في كنف والده الملك المؤسس عبد العزيز آل سعود، وتلقى تعليمه في **مدرسة الأمراء بالرياض**، حيث درس العلوم الدينية، والحديثة، والتاريخ، وتخرج منها عام 1369 هـ (1950 م). منذ صغره، ظهرت عليه سمات القيادة والحكمة، حيث كان ملازماً لوالده وحضر مجالس الدولة الكبرى.</p>
-        <div class="quote-section">
-            "كانت الرياض هي المدرسة الأولى التي تعلمت فيها الإدارة والمسؤولية والعمل."
-            <cite>– الملك سلمان بن عبد العزيز</cite>
+        
+        <div class="feature-card">
+             <h3>نبع الإدارة والتخطيط</h3>
+             <p>يمثل الملك سلمان مدرسة إدارية فريدة، حيث حول الرياض من قرية صحراوية إلى واحدة من أكبر المدن وأكثرها تنظيماً في العالم، مما يؤكد قدرته الفائقة على التخطيط الاستراتيجي والتنفيذ.</p>
         </div>
     </section>
 
     <section class="container" id="timeline-section">
-        <h2>المسيرة الإدارية والتاريخ الوظيفي</h2>
+        <h2>المسيرة الإدارية والخدمة الوطنية</h2>
         <div class="timeline">
             
             <div class="timeline-item">
-                <span class="timeline-year">1954 - 1955 م (1373 هـ)</span>
-                <h3>أمير منطقة الرياض بالنيابة</h3>
-                <p>بدأ خدمته العامة بتكليفه بأول منصب إداري وعمره 19 عاماً، وهي مرحلة مبكرة من بناء خبرته القيادية.</p>
+                <span class="timeline-year">1954 - 1960 م</span>
+                <h3>أمين منطقة الرياض</h3>
+                <p>بدأ خدمته العامة أميراً للرياض، حيث وضع اللبنات الأساسية للتوسع الحضري للعاصمة.</p>
             </div>
             
             <div class="timeline-item">
-                <span class="timeline-year">1955 - 1960 م (1375 - 1380 هـ)</span>
-                <h3>أمير منطقة الرياض (للمرة الأولى)</h3>
-                <p>عين أميراً رسمياً للمنطقة، وبدأ خطط التطوير الأساسية للعاصمة.</p>
+                <span class="timeline-year">1963 - 2011 م</span>
+                <h3>فترة الخمسين عاماً الذهبية</h3>
+                <p>عاد إلى إمارة الرياض ليقود مسيرة تطويرها الشاملة، مع تركيز على البنية التحتية والمشاريع العملاقة.</p>
             </div>
 
             <div class="timeline-item">
-                <span class="timeline-year">1963 - 2011 م (1383 - 1432 هـ)</span>
-                <h3>أمير منطقة الرياض (لأكثر من خمسة عقود)</h3>
-                <p>استمرت ولايته للرياض لأكثر من خمسين عاماً، تحولت فيها المدينة إلى إحدى أكبر الحواضر العالمية وأسرعها نمواً، مع المحافظة على طابعها العربي والإسلامي.</p>
-            </div>
-
-            <div class="timeline-item">
-                <span class="timeline-year">2011 - 2012 م (1432 - 1433 هـ)</span>
-                <h3>وزير الدفاع</h3>
-                <p>تولى حقيبة وزارة الدفاع، وعمل على تطوير القوات المسلحة وإعادة هيكلتها.</p>
+                <span class="timeline-year">2011 - 2012 م</span>
+                <h3>وزارة الدفاع</h3>
+                <p>تولى حقيبة وزارة الدفاع، وبدأ جهود تحديث وتطوير القوات المسلحة السعودية.</p>
             </div>
             
             <div class="timeline-item">
-                <span class="timeline-year">2012 - 2015 م (1433 - 1436 هـ)</span>
-                <h3>ولي العهد ونائب رئيس مجلس الوزراء</h3>
-                <p>تولى ولاية العهد، واستمر في منصب وزير الدفاع، ليشارك في صياغة القرارات المصيرية للمملكة.</p>
+                <span class="timeline-year">2012 - 2015 م</span>
+                <h3>ولي العهد</h3>
+                <p>عُين ولياً للعهد، مما جعله في قلب صناعة القرار الوطني على جميع المستويات.</p>
             </div>
 
             <div class="timeline-item">
                 <span class="timeline-year">2015 م - الوقت الحاضر</span>
-                <h3>ملك المملكة العربية السعودية وخادم الحرمين الشريفين</h3>
-                <p>تولى مقاليد الحكم، وبدأ مرحلة حاسمة من الإصلاحات الشاملة، كان أبرزها إطلاق رؤية 2030.</p>
+                <h3>تولي مقاليد الحكم</h3>
+                <p>أصبح ملكاً للمملكة العربية السعودية، ومؤسساً لمرحلة "العزم والحزم" وإطلاق رؤية 2030.</p>
+            </div>
+            
+            <div class="timeline-item">
+                <span class="timeline-year">مستمر</span>
+                <h3>رئاسة مجلس الوزراء</h3>
+                <p>يستمر في رئاسة مجلس الوزراء، مع الإشراف المباشر على تحقيق أهداف الرؤية الوطنية الكبرى.</p>
             </div>
             
         </div>
     </section>
     
     <section class="container" id="achievements">
-        <h2>أبرز إنجازات عهد الملك سلمان</h2>
-        <div class="timeline" style="border-right: 3px solid var(--accent-gold);">
-            <div class="timeline-item">
-                <span class="timeline-year">2015</span>
-                <h3>تأسيس مركز الملك سلمان للإغاثة</h3>
-                <p>تأسيس مركز الملك سلمان للإغاثة والأعمال الإنسانية (KSrelief) لتوحيد جهود الإغاثة والمساعدات الخارجية.</p>
-            </div>
-            <div class="timeline-item">
-                <span class="timeline-year">2016</span>
-                <h3>إطلاق رؤية 2030</h3>
-                <p>إقرار خطة التحول الوطني الشاملة (رؤية المملكة 2030) بقيادة سمو ولي العهد، الأمير محمد بن سلمان.</p>
-            </div>
-            <div class="timeline-item">
-                <span class="timeline-year">2017</span>
-                <h3>مشاريع نيوم والقدية</h3>
-                <p>الإعلان عن مشروع مدينة نيوم المستقبلية ومشروع القدية الترفيهي، كركائز للاقتصاد المتنوع.</p>
-            </div>
-            <div class="timeline-item">
-                <span class="timeline-year">مستمر</span>
-                <h3>توسعة الحرمين الشريفين</h3>
-                <p>الإشراف المباشر على أكبر توسعة في تاريخ الحرم المكي وتطوير البنية التحتية للمشاعر المقدسة.</p>
-            </div>
+        <h2>أبرز الإنجازات والقرارات التاريخية</h2>
+        
+        <div class="feature-card" style="margin-top: 40px;">
+             <h3>إطلاق رؤية المملكة 2030</h3>
+             <p>أكبر خطة تحول اقتصادي واجتماعي في تاريخ المملكة، تهدف إلى بناء اقتصاد متنوع، مجتمع حيوي، ووطن طموح. هذا القرار يمثل نقطة تحول نحو المستقبل.</p>
         </div>
-    </section>
-    
-    <section class="container" id="vision-stats">
-        <h2>إرث الملك سلمان بالأرقام (إحصائيات افتراضية)</h2>
+
         <div class="stats-section">
             <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 20px;">حصاد العطاء والتنمية</p>
             <div class="stats-grid">
@@ -613,16 +386,16 @@
                     <span class="stat-label">سنة أميراً للرياض</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">100+</span>
-                    <span class="stat-label">دولة استفادت من الإغاثة</span>
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">أجيال من القيادات أشرف على تربيتها</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">20+</span>
+                    <span class="stat-label">مركزاً ومؤسسة خيرية أسسها</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">1</span>
-                    <span class="stat-label">رؤية وطنية تحولية</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">7</span>
-                    <span class="stat-label">ترتيب المملكة بين دول G20</span>
+                    <span class="stat-label">رؤية وطنية تحولية شاملة</span>
                 </div>
             </div>
         </div>
@@ -632,21 +405,20 @@
 
 
     <footer>
-        <p>السيرة الذاتية لخادم الحرمين الشريفين الملك سلمان بن عبد العزيز | تصميم متقدم بخصائص CSS</p>
-        <p>لتفعيل الأوضاع (الوضع الليلي والتراثي) وحركات التمرير، تأكد من وجود كود JavaScript.</p>
+        <p>السيرة الذاتية لخادم الحرمين الشريفين الملك سلمان بن عبد العزيز | تصميم متجدد</p>
+        <p>يتم تفعيل الأوضاع التفاعلية والحركات عبر كود JavaScript المضمن.</p>
     </footer>
 
     <script>
-        // دالة لإظهار الأقسام عند التمرير (Reveal on Scroll)
+        // دالة لإظهار الأقسام عند التمرير
         function checkVisibility() {
             const elements = document.querySelectorAll('.container');
             elements.forEach(el => {
                 const rect = el.getBoundingClientRect();
-                // إذا كان 80% من القسم مرئيًا، أظهر الكلاس 'visible'
                 if (rect.top < window.innerHeight * 0.8) {
                     el.classList.add('visible');
                 } else {
-                    el.classList.remove('visible'); // لإخفائه عند التمرير للأعلى
+                    el.classList.remove('visible');
                 }
             });
         }
@@ -661,27 +433,20 @@
             }
         }
         function scrollToTop() {
-            document.body.scrollTop = 0; // Safari
-            document.documentElement.scrollTop = 0; // Chrome, Firefox, IE and Opera
+            document.body.scrollTop = 0; 
+            document.documentElement.scrollTop = 0; 
         }
 
-
-        // =================================================
         // دالة التحكم في الأوضاع (Dark/Founders Mode)
-        // =================================================
         function setMode(mode) {
             const body = document.getElementById('body-main');
             const btns = document.querySelectorAll('.mode-toggle');
             
-            // إزالة جميع الأوضاع
             body.classList.remove('dark-mode', 'founders-mode');
-            
-            // إضافة الوضع المحدد
             if (mode !== 'light-mode') {
                 body.classList.add(mode);
             }
 
-            // تحديث حالة الأزرار
             btns.forEach(btn => btn.classList.remove('active'));
             if (mode === 'dark-mode') {
                 document.getElementById('darkModeBtn').classList.add('active');
@@ -698,16 +463,13 @@
         window.onload = function() {
             const savedMode = localStorage.getItem('websiteMode') || 'light-mode';
             setMode(savedMode);
-            checkVisibility(); // فحص الرؤية عند التحميل
+            checkVisibility(); 
         };
 
-
-        // ربط الأزرار بالدوال
+        // ربط الأزرار ودوال التمرير
         document.getElementById('lightModeBtn').addEventListener('click', () => setMode('light-mode'));
         document.getElementById('darkModeBtn').addEventListener('click', () => setMode('dark-mode'));
         document.getElementById('foundersModeBtn').addEventListener('click', () => setMode('founders-mode'));
-
-        // ربط دوال التمرير
         window.addEventListener('scroll', () => {
              checkVisibility();
              toggleScrollTopButton();

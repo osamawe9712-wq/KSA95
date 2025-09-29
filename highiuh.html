@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملك سعود بن عبدالعزيز آل سعود - رائد النهضة التعليمية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* ================================================= */
+        /* كود CSS المرفق من المستخدم (تم دمجه بالكامل هنا) */
+        /* ================================================= */
+        :root {
+            /* الألوان القياسية */
+            --primary-green: #004C33; /* أخضر غامق (التركيز) */
+            --secondary-green: #006037; /* أخضر متوسط (التنقل) */
+            --accent-gold: #C5A359; /* ذهبي (التمييز) */
+            --light-bg: #F5F1E5; /* بيج فاتح (الخلفية) */
+            --dark-bg: #0D0D0D; /* خلفية الفوتر */
+            --text-color: #333;
+            --container-bg: white;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --body-font: 'Arial', sans-serif;
+            --history-bg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="%23f5f1e5"/><circle cx="50" cy="50" r="45" fill="none" stroke="%23c5a359" stroke-width="1" opacity="0.1"/></svg>');
+        }
+
+        /* الوضع الليلي (Dark Mode) */
+        body.dark-mode {
+            --primary-green: #89C99A;
+            --secondary-green: #6C9F7A;
+            --accent-gold: #DAA520;
+            --light-bg: #1A1A1A;
+            --dark-bg: #00331A;
+            --text-color: #E0E0E0;
+            --container-bg: #2C2C2C;
+            --shadow-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* الوضع التراثي / زمن المؤسسين (Founders' Era Mode) - الفكرة 2 */
+        body.founders-mode {
+            --primary-green: #964B00; /* بني عميق */
+            --secondary-green: #C5A359; /* ذهبي عتيق */
+            --accent-gold: #333; /* نص داكن */
+            --light-bg: #F5E8D3; /* خلفية سيبيا */
+            --dark-bg: #D8C3A5;
+            --text-color: #583F2F; /* نص بني */
+            --container-bg: #FDF7EC;
+            /* فلتر عام ليعطي تأثير الصورة القديمة */
+            filter: sepia(0.4) saturate(1.1) contrast(1.1); 
+        }
+        .founders-mode .hero-background-image {
+            filter: grayscale(0.2) sepia(0.6); /* تطبيق فلتر خاص على صورة البطل */
+        }
+        .founders-mode .hero h1, .founders-mode .hero p {
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+
+        /* ================================================= */
+        /* التنسيقات العامة */
+        /* ================================================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            padding-top: 60px; 
+            font-family: var(--body-font);
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            direction: rtl;
+            line-height: 1.6;
+            transition: all 0.5s ease-out; /* انتقال الفلتر والألوان */
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-green);
+            font-weight: 700;
+            transition: color 0.5s ease;
+        }
+
+        /* أزرار الأوضاع */
+        .mode-toggle-group {
+            position: fixed;
+            top: 25px;
+            left: 25px; 
+            z-index: 1001;
+            display: flex;
+            gap: 10px;
+        }
+        .mode-toggle {
+            background-color: var(--dark-bg);
+            color: white;
+            border: 2px solid var(--accent-gold);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        .mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* تنسيق رأس الصفحة (Hero Section) */
+        .hero {
+            position: relative;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            background-attachment: fixed;
+            padding-top: 5rem;
+        }
+
+        .hero-background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            transition: filter 0.5s ease-out;
+        }
+
+        /* طبقة التظليل فوق الصورة */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            margin-bottom: 1rem;
+        }
+
+        /* شريط التنقل (Navigation Bar) */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--secondary-green);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            transition: background-color 0.5s ease;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0 20px;
+            white-space: nowrap;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+            transform: scale(1.1);
+        }
+
+        nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* تنسيق أقسام المحتوى */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 3rem;
+            background-color: var(--container-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transition: all 0.6s ease-out, background-color 0.5s ease;
+            transform: translateY(30px);
+            opacity: 0;
+            
+            /* الفكرة 3: إضافة نمط بصري خفيف */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* الفكرة 3: زخرفة شفافة على جميع الحاويات */
+        .container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* نمط خطوط خفيف مستوحى من الخطوط العربية / الهوية */
+            background-image: repeating-linear-gradient(45deg, var(--primary-green) 0, var(--primary-green) 1px, transparent 1px, transparent 10px);
+            opacity: 0.04; 
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container > * { 
+            position: relative;
+            z-index: 1; /* جعل المحتوى فوق الزخرفة */
+        }
+
+        .container.visible {
+            opacity: 1;
+            transform: translateY(0); 
+        }
+
+        .container h2 {
+            font-size: 2.5rem;
+            border-bottom: 3px solid var(--accent-gold);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        #vision h2 {
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        #vision h2:hover {
+            transform: scale(1.02);
+            color: var(--accent-gold);
+        }
+
+        /* قسم الاقتباسات */
+        .quote-section {
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .quote-section cite {
+            display: block;
+            margin-top: 1rem;
+            font-style: normal;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+        }
+
+        /* المخطط الزمني (Timeline) - الفكرة 1: جزء من السرد التاريخي */
+        #history {
+            /* خلفية خفيفة تعكس التاريخ */
+            background-image: var(--history-bg);
+            background-repeat: repeat;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            margin-top: 2rem;
+            border-right: 3px solid var(--primary-green); /* خط وهمي لـ Timeline */
+            padding-right: 25px;
+        }
+        .timeline-item {
+            margin-bottom: 20px;
+            padding-right: 15px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            right: -27px; /* وضع الدائرة على الخط */
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--accent-gold);
+            border: 3px solid var(--secondary-green);
+        }
+        .timeline-item h3 {
+            margin-bottom: 5px;
+        }
+
+        /* قسم الإحصائيات - الفكرة 4: Dynamic Statistics */
+        .stats-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            border: 2px solid var(--accent-gold);
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+        .dark-mode .stats-section {
+            background-color: var(--dark-bg);
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .stat-item {
+            padding: 15px;
+            min-width: 150px;
+            margin: 10px;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .stat-label {
+            color: var(--text-color);
+            font-size: 1rem;
+            display: block;
+        }
+
+        /* تمييز قسم الرؤية باللون (الفكرة 1: الانتقال نحو المستقبل - المستقبل هو الرؤية) */
+        #achievements {
+            background: linear-gradient(135deg, var(--container-bg) 70%, var(--secondary-green) 100%);
+        }
+        body.dark-mode #achievements {
+            background: linear-gradient(135deg, var(--container-bg) 70%, var(--dark-bg) 100%);
+        }
+        body.founders-mode #achievements {
+            background: linear-gradient(135deg, var(--container-bg) 70%, var(--dark-bg) 100%);
+        }
+
+
+        /* تنسيقات GRID المفقودة (القادة والمدن) */
+        .grid-container, .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px var(--shadow-color);
+        }
+
+        /* 1. الحاوية الدائرية الخارجية (Placeholder) - التعديل الأساسي هنا */
+        .image-placeholder {
+            width: 180px;
+            height: 180px;
+            margin: 20px auto 10px; 
+            overflow: hidden; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            border-radius: 50%; 
+            border: 3px solid var(--accent-gold); 
+            background-color: var(--container-bg); 
+            box-shadow: 0 0 15px rgba(197, 163, 89, 0.4); 
+            transition: all 0.5s ease;
+        }
+        /* تعديل خاص للحاويات الصغيرة */
+        .card-small .image-placeholder {
+            width: 100px;
+            height: 100px;
+        }
+
+
+        /* 2. الصورة الداخلية (img) داخل الحاوية - التعديل الأساسي هنا */
+        .card img {
+            width: 100%; 
+            height: 100%;
+            object-fit: cover; 
+            border-radius: 50%; 
+            padding: 0; 
+            transition: transform 0.5s ease;
+        }
+        /* تعديل خاص لصور المعرض التي ليست داخل placeholder دائري */
+        .image-gallery img {
+            border-radius: 10px !important;
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+
+        .card:hover .image-placeholder {
+            border-color: var(--primary-green);
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            margin: 15px 0 5px;
+            font-size: 1.2rem;
+        }
+
+        .reign-period {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+        .card p {
+            padding: 0 15px 15px;
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+
+        /* تنسيق نافذة العرض المنبثقة (Modal) */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 10px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* زر العودة للأعلى */
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            border: none;
+            outline: none;
+            background-color: var(--primary-green);
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: var(--secondary-green);
+            transform: scale(1.05);
+        }
+
+        /* تنسيق الفوتر */
+        footer {
+            background-color: var(--dark-bg);
+            color: #ccc;
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+
+
+        /* ---------------------------------------------------- */
+        /* التعديلات الخاصة بالشاشات الصغيرة (الجوال) */
+        /* ---------------------------------------------------- */
+        @media (max-width: 768px) {
+            .mode-toggle-group {
+                top: 15px;
+                left: 15px;
+            }
+            .stats-grid {
+                justify-content: center;
+            }
+            .container {
+                padding: 1.5rem;
+                margin: 2rem auto;
+            }
+            .container h2 {
+                font-size: 2rem;
+            }
+            .quote-section blockquote {
+                font-size: 1.2rem !important;
+                padding-right: 10px !important;
+            }
+        }
+    </style>
+</head>
+<body class="default-mode">
+    
+    <div class="mode-toggle-group">
+        <button id="darkModeToggle" class="mode-toggle" title="الوضع الليلي"><i class="fas fa-moon"></i></button>
+        <button id="foundersModeToggle" class="mode-toggle" title="وضع زمن المؤسسين"><i class="fas fa-scroll"></i></button>
+    </div>
+
+    <header class="hero">
+        <img src="https://cdn.discordapp.com/attachments/1420086284071731291/1422219889984147660/king-saud-4-pica.png?ex=68dbe0fd&is=68da8f7d&hm=361f53bb198bdbef1bf2f1e564868bf164942c087a29057fcde9c6128c72b63d&" alt="صورة تاريخية للملك سعود" class="hero-background-image">
+        <div class="hero-content">
+            <h1>الملك سعود بن عبدالعزيز آل سعود</h1>
+            <p style="font-size: 1.5rem; margin-top: 1rem; color: #f5f1e5;">ملك التنمية والمؤسسات التعليمية (1953-1964م)</p>
+        </div>
+    </header>
+
+    <nav>
+         <a href="https://osamawe9712-wq.github.io/ksa995/">الرئيسة</a>
+        <a href="#biography">السيرة والنشأة</a>
+        <a href="#history">عهده وأبرز الأحداث</a>
+        <a href="#achievements">النهضة والتطوير</a>
+        <a href="#quotes">من أقواله</a>
+        <a href="#legacy">الإرث الدائم</a>
+    </nav>
+
+    <main>
+
+        <section id="biography" class="container">
+            <h2>السيرة والمولد والنشأة</h2>
+            <p>وُلد **سعود بن عبدالعزيز بن عبدالرحمن آل سعود** عام **1902م**، في الكويت، وهو العام الذي شهد انطلاق والده الملك المؤسس لفتح الرياض. نشأ تحت رعاية والده مباشرة، وتلقى تعليمه على أيدي كبار علماء عصره، مما أكسبه ثقافة دينية وقيادية متعمقة.</p>
+            <p>شارك الملك سعود في العديد من الحملات والمعارك خلال مرحلة توحيد المملكة، كما تقلَّد العديد من المناصب القيادية مبكراً، بما في ذلك ولاية العهد عام 1933م، قبل أن يتولى الحكم خلفاً لوالده في **9 نوفمبر 1953م**.</p>
+        </section>
+
+        <section id="history" class="container">
+            <h2>عهده وأبرز الأحداث التاريخية</h2>
+            
+            <p>اتسم عهد الملك سعود (1953م - 1964م) بالتحول من مرحلة التأسيس إلى مرحلة بناء المؤسسات الحديثة، حيث شهد قفزة كبيرة في الاعتماد على عوائد النفط لتنفيذ مشاريع عملاقة:</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>1953م - تسلُّم مقاليد الحكم</h3>
+                    <p>أصبح الملك سعود ثاني ملوك المملكة، وبدأ عهده بإنفاق ضخم على مشاريع البنية التحتية والخدمات العامة.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>1954م - إنشاء أول جامعة سعودية</h3>
+                    <p>صدر المرسوم الملكي بإنشاء **جامعة الملك سعود** في الرياض (جامعة الرياض سابقاً)، لتكون اللبنة الأولى في التعليم الجامعي بالمملكة.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>1960م - تطوير نظام الوزارات</h3>
+                    <p>تم تأسيس وإعادة هيكلة العديد من الوزارات الجديدة، أبرزها **وزارة المعارف (التعليم)** و **وزارة التجارة**، لتنظيم شؤون الدولة المتنامية.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>1962م - نظام الحكم والمجلس الأعلى للقضاء</h3>
+                    <p>إصدار الأنظمة التي عززت من سلطة المجلس الأعلى للقضاء ونظمت العلاقة بين أجهزة الدولة.</p>
+                </div>
+            </div>
+            
+            <div class="stats-section">
+                <h3>إحصائيات وحقائق من عهده</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">11</span>
+                        <span class="stat-label">عدد سنوات الحكم</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1954</span>
+                        <span class="stat-label">تأسيس جامعة الملك سعود</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">400%</span>
+                        <span class="stat-label">نمو الميزانية العامة تقريباً</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements" class="container">
+            <h2>النهضة والتطوير وأبرز الإنجازات</h2>
+            
+            <p>يُعد عهد الملك سعود عهد القفزات النوعية في التأسيس الحضاري الحديث، خاصة في مجالات التعليم والبنية التحتية:</p>
+
+            <div class="grid-container">
+                <div class="card">
+                    <div class="image-placeholder"><i class="fas fa-graduation-cap" style="font-size: 4rem; color: var(--accent-gold);"></i></div>
+                    <h3>رائد التعليم العالي</h3>
+                    <p>أشرف بنفسه على تأسيس **جامعة الملك سعود**، وهي أول جامعة بالمملكة، وبدأ بوضع خطط لإنشاء مدارس ومعاهد متخصصة في جميع المناطق.</p>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder"><i class="fas fa-city" style="font-size: 4rem; color: var(--primary-green);"></i></div>
+                    <h3>البناء العمراني للعاصمة</h3>
+                    <p>شهدت مدينة **الرياض** تحولاً هائلاً، حيث أمر ببناء القصور الملكية والمباني الحكومية الضخمة، ونقل أغلب أجهزة الدولة إليها لتصبح عاصمة فعلية.</p>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder"><i class="fas fa-road" style="font-size: 4rem; color: var(--secondary-green);"></i></div>
+                    <h3>توسع البنية التحتية</h3>
+                    <p>تم توسيع شبكات الطرق والاتصالات الحديثة، ودُشنت خطط لمشاريع المياه والكهرباء والصحة لتلبية احتياجات التزايد السكاني والنمو الاقتصادي السريع.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="quotes" class="container quote-section">
+            <h2>من أقوال الملك سعود</h2>
+            <blockquote style="font-size: 1.5rem; border-right: 5px solid var(--accent-gold); padding-right: 20px; margin: 30px 0;">
+                "إنني أريد من جميع المواطنين أن يكونوا أمة واحدة، لا فرق بين بدوي وحضري."
+            </blockquote>
+            <cite>الملك سعود بن عبدالعزيز</cite>
+            
+            <blockquote style="font-size: 1.5rem; border-right: 5px solid var(--accent-gold); padding-right: 20px; margin: 30px 0;">
+                "لولا الشعب لما كنا هنا، لذا فإن الشعب هو أساس الحكم ومركز اهتمامنا الأول."
+            </blockquote>
+            <cite>الملك سعود بن عبدالعزيز</cite>
+        </section>
+
+
+        <section id="legacy" class="container">
+            <h2>الإرث الدائم والوفاة</h2>
+            <p style="max-width: 800px; margin: 0 auto 2rem; text-align: center;">توفي الملك سعود بن عبدالعزيز في **23 فبراير 1969م** في أثينا. على الرغم من التحديات الاقتصادية والسياسية التي واجهت عهده، يظل إرثه مرتبطاً بالانطلاق الفعلي نحو **العصر المؤسساتي** والتعليم الحديث. فالكثير من الإدارات والهيئات التعليمية الكبرى التي تأسست في عهده لا تزال تمثل عصب الدولة الحديثة.</p>
+            
+            <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: center;">
+                <div class="card card-small" style="padding: 15px;">
+                    <div class="image-placeholder"><i class="fas fa-university" style="font-size: 2.5rem; color: var(--accent-gold);"></i></div>
+                    <h3>بذور التعليم</h3>
+                    <p>تأسيس أول جامعة سعودية كمركز إشعاع ثقافي.</p>
+                </div>
+                <div class="card card-small" style="padding: 15px;">
+                    <div class="image-placeholder"><i class="fas fa-users-cog" style="font-size: 2.5rem; color: var(--primary-green);"></i></div>
+                    <h3>تطور الإدارة</h3>
+                    <p>هيكلة وتأسيس وزارات جديدة لرفع كفاءة الدولة.</p>
+                </div>
+                <div class="card card-small" style="padding: 15px;">
+                    <div class="image-placeholder"><i class="fas fa-crown" style="font-size: 2.5rem; color: var(--secondary-green);"></i></div>
+                    <h3>التنقل السلمي</h3>
+                    <p>ترسيخ مبدأ انتقال الحكم بين أبناء المؤسس.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="gallery" class="container">
+            <h2>معرض صور للملك سعود</h2>
+            <div class="image-gallery">
+                <div class="card" style="padding: 0;">
+                    <img src="https://cdn.discordapp.com/attachments/1420729467231273063/1422222166224666815/Gemini_Generated_Image_4vslm04vslm04vsl.png?ex=68dbe31c&is=68da919c&hm=21b019e247fba81fa12d9828e1210d560d03fbd64d3171b8678dc8f52c509f23&" alt="صورة للملك سعود في إحدى المناسبات" onclick="openModal(this.src)" style="cursor: pointer;">
+                </div>
+                <div class="card" style="padding: 0;">
+                    <img src="https://cdn.discordapp.com/attachments/1420086284071731291/1422222955202744360/Gemini_Generated_Image_xt9661xt9661xt96.png?ex=68dbe3d8&is=68da9258&hm=1a461c57f1d9bcf144e7ceca9ae222f85d4a508e12f2a6978b4faf1a03a14d3f&" alt="صورة تاريخية للملك سعود وهو يتفقد مشروع" onclick="openModal(this.src)" style="cursor: pointer;">
+                </div>
+                <div class="card" style="padding: 0;">
+                    <img src="https://cdn.discordapp.com/attachments/1420086284071731291/1422224826252267743/Gemini_Generated_Image_mepmxkmepmxkmepm.png?ex=68dbe596&is=68da9416&hm=33472d1f0d78cc2a2c33459d93b54b36fbd0153647ed65c17525628db6c6d36e&" alt="صورة تاريخية لمدينة الرياض في عهده" onclick="openModal(this.src)" style="cursor: pointer;">
+                </div>
+            </div>
+        </section>
+        
+        <div id="imageModal" class="image-modal">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImage">
+        </div>
+
+    </main>
+
+    <button id="scrollToTopBtn" title="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+
+    <footer>
+        <p>صفحة مخصصة للملك سعود بن عبدالعزيز آل سعود - رحمه الله.</p>
+        <p>&copy; 2024. مصدر المعلومات: أرشيفات وكتب التاريخ السعودي.</p>
+    </footer>
+
+    <script>
+        // 1. وظيفة تبديل الأوضاع (الداكن والتراثي)
+        function setMode(modeClass) {
+            const body = document.body;
+            body.classList.remove('dark-mode', 'founders-mode');
+            
+            if (modeClass) {
+                body.classList.add(modeClass);
+                localStorage.setItem('pageMode', modeClass);
+            } else {
+                localStorage.removeItem('pageMode');
+            }
+        }
+
+        document.getElementById('darkModeToggle').addEventListener('click', () => {
+            if (document.body.classList.contains('dark-mode')) {
+                setMode(null); // العودة للوضع الافتراضي
+            } else {
+                setMode('dark-mode');
+            }
+        });
+
+        document.getElementById('foundersModeToggle').addEventListener('click', () => {
+            if (document.body.classList.contains('founders-mode')) {
+                setMode(null); // العودة للوضع الافتراضي
+            } else {
+                setMode('founders-mode');
+            }
+        });
+
+        // تطبيق الوضع المحفوظ عند تحميل الصفحة
+        const savedMode = localStorage.getItem('pageMode');
+        if (savedMode) {
+            document.body.classList.add(savedMode);
+        }
+
+
+        // 2. وظيفة إظهار الأقسام عند التمرير (Intersection Observer)
+        const containers = document.querySelectorAll('.container');
+
+        const observerOptions = {
+            root: null, // viewport
+            rootMargin: '0px',
+            threshold: 0.1 // عندما يظهر 10% من العنصر
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // إيقاف المراقبة بعد الظهور
+                }
+            });
+        }, observerOptions);
+
+        containers.forEach(container => {
+            observer.observe(container);
+        });
+
+
+        // 3. زر العودة للأعلى
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        }
+
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 4. وظائف النافذة المنبثقة للصور (Modal)
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+
+        function openModal(imgSrc) {
+            modal.style.display = "block";
+            modalImg.src = imgSrc;
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // إغلاق النافذة عند النقر خارج الصورة
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
